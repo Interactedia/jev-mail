@@ -1,0 +1,23 @@
+{
+  "name": "jev-mail",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "classify": "npm run build && node --disable-warning=ExperimentalWarning --experimental-sqlite --env-file-if-exists=.env dist/classify.js",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "fetch:emails": "npm run build && node --env-file-if-exists=.env dist/imap.js",
+    "dashboard": "npm run build && node --disable-warning=ExperimentalWarning --experimental-sqlite --env-file-if-exists=.env dist/dashboard.js",
+    "ingest:new": "npm run build && node --disable-warning=ExperimentalWarning --experimental-sqlite --env-file-if-exists=.env dist/ingest.js new",
+    "ingest:history": "npm run build && node --disable-warning=ExperimentalWarning --experimental-sqlite --env-file-if-exists=.env dist/ingest.js history"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  },
+  "dependencies": {
+    "imapflow": "^2.5.9",
+    "postal-mime": "^4.0.11"
+  }
+}
